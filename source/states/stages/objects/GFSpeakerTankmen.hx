@@ -1,5 +1,6 @@
 package states.stages.objects;
 
+import graphics.FlxSpriteExt;
 import states.PlayState;
 
 class GFSpeakerTankmen extends FlxSpriteGroup
