@@ -27,6 +27,8 @@ class Limo extends BaseStage
 	var grpLimoParticles:FlxTypedGroup<BGSprite>;
 	var dancersDiff:Float = 320;
 
+	var gfthing:GFSpeaker;
+
 	override function create()
 	{
 		var skyBG:BGSprite = new BGSprite('limo/limoSunset', -120, -50, 0.1, 0.1);
@@ -70,6 +72,9 @@ class Limo extends BaseStage
 			//PRECACHE SOUND
 			Paths.sound('dancerdeath');
 			setDefaultGF('gf-car');
+		
+		        gfthing = new GFSpeaker(gfGroup.x, gfGroup.y + 550);
+		        add(gfthing);
 		}
 
 		fastCar = new BGSprite('limo/fastCarLol', -300, 160);
@@ -180,6 +185,8 @@ class Limo extends BaseStage
 
 		if (FlxG.random.bool(10) && fastCarCanDrive)
 			fastCarDrive();
+		
+		//if(curBeat % 2 == 0) gfthing.beatHit();
 	}
 	
 	// Substates for pausing/resuming tweens and timers

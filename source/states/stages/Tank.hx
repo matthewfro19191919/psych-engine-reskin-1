@@ -12,6 +12,8 @@ class Tank extends BaseStage
 	var tankmanRun:FlxTypedGroup<TankmenBG>;
 	var foregroundSprites:FlxTypedGroup<BGSprite>;
 
+	var gfthing:GFSpeakerTankmen;
+
 	override function create()
 	{
 		var sky:BGSprite = new BGSprite('tankSky', -400, -400, 0, 0);
@@ -39,6 +41,9 @@ class Tank extends BaseStage
 		ruins.setGraphicSize(Std.int(1.1 * ruins.width));
 		ruins.updateHitbox();
 		add(ruins);
+		
+		gfthing = new GFSpeakerTankmen(gfGroup.x, gfGroup.y + 550);
+		add(gfthing);
 
 		if(!ClientPrefs.data.lowQuality)
 		{
@@ -415,5 +420,10 @@ class Tank extends BaseStage
 				spr.y -= 100;
 			});
 		}
+	}
+
+	override function beatHit()
+	{
+		//if(curBeat % 2 == 0) gfthing.beatHit();
 	}
 }

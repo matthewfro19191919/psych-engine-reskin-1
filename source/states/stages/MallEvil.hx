@@ -4,6 +4,8 @@ import states.stages.objects.*;
 
 class MallEvil extends BaseStage
 {
+	var gfthing:GFSpeakerChristmas;
+
 	override function create()
 	{
 		var bg:BGSprite = new BGSprite('christmas/evilBG', -400, -500, 0.2, 0.2);
@@ -18,6 +20,9 @@ class MallEvil extends BaseStage
 		add(evilSnow);
 		setDefaultGF('gf-christmas');
 		
+		gfthing = new GFSpeakerChristmas(gfGroup.x, gfGroup.y + 550);
+		add(gfthing);
+
 		//Winter Horrorland cutscene
 		if (isStoryMode && !seenCutscene)
 		{
@@ -62,5 +67,10 @@ class MallEvil extends BaseStage
 				}
 			});
 		});
+	}
+
+	override function beatHit()
+	{
+		//if(curBeat % 2 == 0) gfthing.beatHit();
 	}
 }
