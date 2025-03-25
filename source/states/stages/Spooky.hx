@@ -39,7 +39,7 @@ class Spooky extends BaseStage
 		add(halloweenWhite);
 
 		gfthing = new GFSpeaker(gfGroup.x, gfGroup.y + 550);
-		add(gfthing)
+		add(gfthing);
 	}
 
 	var lightningStrikeBeat:Int = 0;
