@@ -29,7 +29,7 @@ class GFSpeakerTankmen extends FlxSpriteGroup
 		add(speaker);
       
     var headStr = 'tankmanTop'+ (i + 1);');
-		Paths.loadAnimateAtlas(head, 'characters/speakers/' + headStr);
+		Paths.loadAnimateAtlas(head, 'characters/speakers/tankmanTop');
 		head.anim.addBySymbol('anim', headStr, 24, false);
 		head.anim.play('anim', true);
 		head.anim.curFrame = head.anim.length - 1;
