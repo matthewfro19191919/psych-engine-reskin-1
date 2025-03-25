@@ -1,5 +1,7 @@
 package states.stages;
 
+import states.stages.objects.*;
+
 class Spooky extends BaseStage
 {
 	var halloweenBG:BGSprite;
