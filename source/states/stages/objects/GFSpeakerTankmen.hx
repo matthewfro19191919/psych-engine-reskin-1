@@ -1,16 +1,13 @@
 package states.stages.objects;
 
-import states.PlayState;
+class GFSpeakerTankmen extends FlxSpriteGroup {
+    var speaker:FlxAnimate;
+    var body:FlxAnimate;
+    var head1:FlxAnimate;
+    var head2:FlxAnimate;
 
-class GFSpeakerTankmen extends FlxSpriteGroup
-{
-	var speaker:FlxAnimate;
-        var body:FlxAnimate;
-	var head1:FlxAnimate;
-	var head2:FlxAnimate;
-
-public function new(x:Float = 0, y:Float = 0)
-{
+     public function new(x:Float = 0, y:Float = 0)
+     {
 	speaker = new FlxAnimate();
 	Paths.loadAnimateAtlas(speaker, 'characters/speakers');
 	speaker.anim.addBySymbol('anim', 'speakers', 24, false);
@@ -32,19 +29,18 @@ public function new(x:Float = 0, y:Float = 0)
 	head1.anim.curFrame = speaker.anim.length - 1;
 	add(head1);
 
-        head2 = new FlxAnimate(speaker.x, speaker.y - 215);
+	head2 = new FlxAnimate(speaker.x, speaker.y - 215);
 	Paths.loadAnimateAtlas(head2, 'characters/speakers/tankmanTop2');
 	head2.anim.addBySymbol('anim', 'tankmanTop2', 24, false);
 	head2.anim.play('anim', true);
 	head2.anim.curFrame = speaker.anim.length - 1;
 	add(head2);
-}
-
-public function beatHit()
-{
+     }
+     public function beatHit()
+     {
 	speaker.anim.play('anim', true);
 	body.anim.play('anim', true);
 	head1.anim.play('anim', true);
 	head2.anim.play('anim', true);
-}
+    }
 }
