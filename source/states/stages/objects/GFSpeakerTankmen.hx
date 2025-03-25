@@ -5,38 +5,44 @@ import states.PlayState;
 
 class GFSpeakerTankmen extends FlxSpriteGroup
 {
-	var speaker:FlxSpriteExt;
-        var parts:Array<FlxSpriteExt> = [];
+	var speaker:FlxAnimate;
+        var body:FlxAnimate;
+        var body:FlxAnimate;
 
 public function new(x:Float = 0, y:Float = 0)
-{
-    PlayState.gf.x += 120;
-    speaker = new FlxSpriteExt(PlayState.gf.x - 190, PlayState.gf.y + 305.5);
-    speaker.loadImage('characters/speakers');
-    speaker.addAnim('speakers', 'speakers');
-    ScriptChar.group.insert(0, speaker);
+{	
+	speaker = new FlxAnimate();
+	Paths.loadAnimateAtlas(speaker, 'characters/speakers');
+	speaker.anim.addBySymbol('anim', 'speakers', 24, false);
+	speaker.anim.play('anim', true);
+	speaker.anim.curFrame = speaker.anim.length - 1;
+	speaker.antialiasing = antialias;
+	add(speaker);
     
     for (i in 0...2) {
-        var body:FlxSpriteExt = new FlxSpriteExt(speaker.x, speaker.y - 85).loadImage('characters/speakers/tankmanBodyPart');
-        body.addAnim('idle', 'tankmanBody');
-        body.flipX = i == 0;
-        body.x += (i == 0 ? -100 : 510);
-        ScriptChar.group.insert(0, body);
-        parts.push(body);
+	body = new FlxAnimate(speaker.x, speaker.y - 85);
+	Paths.loadAnimateAtlas(body, 'characters/speakers/tankmanBodyPart');
+	body.anim.addBySymbol('anim', 'speakers', 24, false);
+	body.anim.play('anim', true);
+	body.anim.curFrame = speaker.anim.length - 1;
+	body.antialiasing = antialias;
+	add(body);
 
         var headStr = 'tankmanTop'+ (i + 1);
-        var head:FlxSpriteExt = new FlxSpriteExt(speaker.x, speaker.y - 215).loadImage('characters/speakers/' + headStr);
+        var head:FlxAnimate = new FlxAnimate(speaker.x, speaker.y - 215);
+	Paths.loadAnimateAtlas('characters/speakers/' + headStr);
         head.x += (i != 0 ? -120 : 445);
-        head.addAnim('idle', headStr);
-        head.flipX = i != 0;
-        ScriptChar.group.add(head);
-        parts.push(head);
+	head.anim.addBySymbol('anim', 'speakers', 24, false);
+	head.anim.play('anim', true);
+	head.anim.curFrame = speaker.anim.length - 1;
+	head.antialiasing = antialias;
+	add(head);
     }
 }
 public function beatHit()
 {
 	speaker.anim.play('anim', true);
 	body.anim.play('anim', true);
-	head1.anim.play('anim', head);
+	head.anim.play('anim', true);
 }
 }
