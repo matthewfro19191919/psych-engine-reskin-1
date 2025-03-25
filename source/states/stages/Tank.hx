@@ -125,7 +125,11 @@ class Tank extends BaseStage
 	}
 
 	override function countdownTick(count:Countdown, num:Int) if(num % 2 == 0) everyoneDance();
-	override function beatHit() everyoneDance();
+	override function beatHit()
+	{
+		//if(curBeat % 2 == 0) 
+		everyoneDance();
+	}
 	function everyoneDance()
 	{
 		if(!ClientPrefs.data.lowQuality) tankWatchtower.dance();
@@ -420,10 +424,5 @@ class Tank extends BaseStage
 				spr.y -= 100;
 			});
 		}
-	}
-
-	override function beatHit()
-	{
-		//if(curBeat % 2 == 0) gfthing.beatHit();
 	}
 }
