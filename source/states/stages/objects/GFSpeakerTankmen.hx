@@ -6,8 +6,8 @@ class GFSpeakerTankmen extends FlxSpriteGroup {
     var head1:FlxAnimate;
     var head2:FlxAnimate;
 
-     public function new(x:Float = 0, y:Float = 0)
-     {
+    public function new(x:Float = 0, y:Float = 0)
+    {
 	speaker = new FlxAnimate();
 	Paths.loadAnimateAtlas(speaker, 'characters/speakers');
 	speaker.anim.addBySymbol('anim', 'speakers', 24, false);
@@ -35,9 +35,9 @@ class GFSpeakerTankmen extends FlxSpriteGroup {
 	head2.anim.play('anim', true);
 	head2.anim.curFrame = speaker.anim.length - 1;
 	add(head2);
-     }
-     public function beatHit()
-     {
+    }
+    public function beatHit()
+    {
 	speaker.anim.play('anim', true);
 	body.anim.play('anim', true);
 	head1.anim.play('anim', true);
