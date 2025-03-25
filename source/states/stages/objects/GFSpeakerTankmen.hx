@@ -10,7 +10,7 @@ class GFSpeakerTankmen extends FlxSpriteGroup
 	var head2:FlxAnimate;
 
 public function new(x:Float = 0, y:Float = 0)
-{	
+{
 	speaker = new FlxAnimate();
 	Paths.loadAnimateAtlas(speaker, 'characters/speakers');
 	speaker.anim.addBySymbol('anim', 'speakers', 24, false);
@@ -38,8 +38,8 @@ public function new(x:Float = 0, y:Float = 0)
 	head2.anim.play('anim', true);
 	head2.anim.curFrame = speaker.anim.length - 1;
 	add(head2);
-
 }
+
 public function beatHit()
 {
 	speaker.anim.play('anim', true);
