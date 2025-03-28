@@ -214,11 +214,11 @@ class ModdingUtil
     inline public static function addPrint(txt:String)      print(txt, ADD);
     inline public static function errorPrint(txt:String)    print(txt, ERROR);
     inline public static function warningPrint(txt:String)  print(txt, WARNING);
-    inline public static function print(text:String, type:PrintType):Void {
+    inline public static function print(text:String):Void {
         #if DEV_TOOLS
-        Main.console.print(text, type);
+        Main.console.print(text);
         #else
-        trace("[" + type + "] " + text);
+        trace("" + text);
         #end
     }
 
