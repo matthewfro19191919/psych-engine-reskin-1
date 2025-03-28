@@ -8,8 +8,6 @@ class Mall extends BaseStage
 	var bottomBoppers:MallCrowd;
 	var santa:BGSprite;
 
-	var gfthing:GFSpeakerChristmas;
-
 	override function create()
 	{
 		var bg:BGSprite = new BGSprite('christmas/bgWalls', -1000, -500, 0.2, 0.2);
@@ -42,20 +40,13 @@ class Mall extends BaseStage
 		add(santa);
 		Paths.sound('Lights_Shut_off');
 		setDefaultGF('gf-christmas');
-		
+
 		if(isStoryMode && !seenCutscene)
 			setEndCallback(eggnogEndCutscene);
-		
-		gfthing = new GFSpeakerChristmas(gfGroup.x, gfGroup.y + 550);
-		add(gfthing);
 	}
 
 	override function countdownTick(count:Countdown, num:Int) everyoneDance();
-	override function beatHit()
-	{
-	        everyoneDance();
-		//if(curBeat % 2 == 0) gfthing.beatHit();
-	}
+	override function beatHit() everyoneDance();
 
 	override function eventCalled(eventName:String, value1:String, value2:String, flValue1:Null<Float>, flValue2:Null<Float>, strumTime:Float)
 	{

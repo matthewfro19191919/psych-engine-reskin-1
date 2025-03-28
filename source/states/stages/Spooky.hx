@@ -1,14 +1,9 @@
 package states.stages;
 
-import states.stages.objects.*;
-
 class Spooky extends BaseStage
 {
 	var halloweenBG:BGSprite;
 	var halloweenWhite:BGSprite;
-
-	var gfthing:GFSpeaker;
-
 	override function create()
 	{
 		if(!ClientPrefs.data.lowQuality) {
@@ -39,9 +34,6 @@ class Spooky extends BaseStage
 		halloweenWhite.alpha = 0;
 		halloweenWhite.blend = ADD;
 		add(halloweenWhite);
-
-		gfthing = new GFSpeaker(gfGroup.x, gfGroup.y + 550);
-		add(gfthing);
 	}
 
 	var lightningStrikeBeat:Int = 0;
@@ -52,8 +44,6 @@ class Spooky extends BaseStage
 		{
 			lightningStrikeShit();
 		}
-	        
-	        //if(curBeat % 2 == 0) gfthing.beatHit();
 	}
 
 	function lightningStrikeShit():Void

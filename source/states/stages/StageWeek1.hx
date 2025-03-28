@@ -8,9 +8,6 @@ class StageWeek1 extends BaseStage
 	var dadbattleBlack:BGSprite;
 	var dadbattleLight:BGSprite;
 	var dadbattleFog:DadBattleFog;
-	
-	var gfthing:GFSpeaker;
-	
 	override function create()
 	{
 		var bg:BGSprite = new BGSprite('stageback', -600, -200, 0.9, 0.9);
@@ -36,9 +33,6 @@ class StageWeek1 extends BaseStage
 			stageCurtains.updateHitbox();
 			add(stageCurtains);
 		}
-		
-		gfthing = new GFSpeaker(gfGroup.x, gfGroup.y + 550);
-		add(gfthing);
 	}
 	override function eventPushed(event:objects.Note.EventNote)
 	{
@@ -99,10 +93,5 @@ class StageWeek1 extends BaseStage
 						FlxTween.tween(dadbattleFog, {alpha: 0}, 0.7, {onComplete: function(twn:FlxTween) dadbattleFog.visible = false});
 				}
 		}
-	}
-
-	override function beatHit()
-	{
-		//if(curBeat % 2 == 0) gfthing.beatHit();
 	}
 }
