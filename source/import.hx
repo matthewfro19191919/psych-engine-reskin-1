@@ -4,6 +4,9 @@
 import backend.Discord;
 #end
 
+//testing
+import modding.ModdingUtil;
+  
 //Psych
 #if LUA_ALLOWED
 import llua.*;
