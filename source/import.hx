@@ -3,9 +3,6 @@
 #if DISCORD_ALLOWED
 import backend.Discord;
 #end
-
-//testing
-import modding.ModdingUtil;
   
 //Psych
 #if LUA_ALLOWED
