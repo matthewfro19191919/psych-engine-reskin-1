@@ -7,12 +7,6 @@ function createChar():Void {
     speaker.addAnim('speakers', 'speakers');
     ScriptChar.group.insert(0, speaker);
 
-
-    speaker.flippedOffsets =  ScriptChar.flippedOffsets;
-    speaker.flipX = ScriptChar.flipX;
-    if (speaker.flippedOffsets)
-        speaker.x += 140;
-
     ScriptChar._dynamic.dodge = function () {
         ScriptChar.playAnim('dodge', true);
         ScriptChar.forceDance = false;
