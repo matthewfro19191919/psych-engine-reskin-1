@@ -3418,6 +3418,15 @@ class PlayState extends MusicBeatState
 	}
 	#end
 
+	inline function addCharScript(char:Character) {
+		var script = HScript(Paths.script('characters/' + char.curCharacter), '_charScript_' + char.type);
+		if (script != null) {
+			char.script = script;
+			script.set('ScriptChar', char);
+			script.safeCall('createChar', [char]);
+		}
+	}
+
 	public function callOnScripts(funcToCall:String, args:Array<Dynamic> = null, ignoreStops = false, exclusions:Array<String> = null, excludeValues:Array<Dynamic> = null):Dynamic {
 		var returnVal:Dynamic = LuaUtils.Function_Continue;
 		if(args == null) args = [];
