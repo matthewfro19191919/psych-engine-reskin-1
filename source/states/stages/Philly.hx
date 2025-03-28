@@ -18,8 +18,6 @@ class Philly extends BaseStage
 	var phillyWindowEvent:BGSprite;
 	var curLightEvent:Int = -1;
 
-	var gfthing:GFSpeaker;
-
 	override function create()
 	{
 		if(!ClientPrefs.data.lowQuality) {
@@ -49,9 +47,6 @@ class Philly extends BaseStage
 
 		phillyStreet = new BGSprite('philly/street', -40, 50);
 		add(phillyStreet);
-		
-		gfthing = new GFSpeaker(gfGroup.x, gfGroup.y + 550);
-		add(gfthing);
 	}
 	override function eventPushed(event:objects.Note.EventNote)
 	{
@@ -102,8 +97,6 @@ class Philly extends BaseStage
 			phillyWindow.color = phillyLightsColors[curLight];
 			phillyWindow.alpha = 1;
 		}
-
-		//if(curBeat % 2 == 0) gfthing.beatHit();
 	}
 
 	override function eventCalled(eventName:String, value1:String, value2:String, flValue1:Null<Float>, flValue2:Null<Float>, strumTime:Float)
