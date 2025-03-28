@@ -1,5 +1,7 @@
 package modding;
 
+import psychlua.HScript;
+
 typedef ModFolder = {
     var title:String;
     var description:String;
@@ -53,12 +55,12 @@ class ModdingUtil
     public static var globalMods:Array<ModFolder> = [];
     
     //Scripts
-    public static var scripts:Array<FunkScript> = [];
-    public static var scriptsMap:Map<String, FunkScript> = [];
+    public static var scripts:Array<HScript> = [];
+    public static var scriptsMap:Map<String, HScript> = [];
 
     public static function clearScripts():Void
     {
-        FunkScript.globalVariables.clear();
+        HScript.globalVariables.clear();
         #if DEV_TOOLS
         if (Main.console != null)
             Main.console.clear();
@@ -146,7 +148,7 @@ class ModdingUtil
         list.fastForEach((script, i) -> addScript(script, tags[i]));
     }
 
-    public static function addScript(path:String, ?tag:String):Null<FunkScript>
+    public static function addScript(path:String, ?tag:String):Null<HScript>
     {
         var scriptCode:String = CoolUtil.getFileContent(path);
         if (path.contains('//') || scriptCode.length <= 0)
@@ -161,7 +163,7 @@ class ModdingUtil
                 scriptCode = updateScript(scriptCode, mod.apiVersion);
         }
 
-        final script:FunkScript = new FunkScript(scriptCode, tag);
+        final script:HScript = new HScript(scriptCode, tag);
         scriptsMap.set(tag, script);
         scripts.push(script);
         return script;
@@ -176,7 +178,7 @@ class ModdingUtil
         return code;
     }
 
-    public static function removeScript(?script:FunkScript):Null<FunkScript> {
+    public static function removeScript(?script:HScript):Null<HScript> {
         if (script != null) {
             if (scriptsMap.exists(script.scriptID))
                 scriptsMap.remove(script.scriptID);
