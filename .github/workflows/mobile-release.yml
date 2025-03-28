@@ -10,7 +10,7 @@ permissions:
 
 env:
   PROJECT_NAME: PsychEngine
-  REPO_PATH: matthewfro19191919/psych-engine-reskin
+  REPO_PATH: MatthewFro191919/psych-engine-reskin-1
 
 jobs:
   get-commit-hash:
